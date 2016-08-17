@@ -1,0 +1,25 @@
+<template name='edit_task'>
+	<div class="container">
+		<h3>Edycja zadania</h3>
+		<form class="edit-task-form" enctype="multipart/form-data">
+			<div class="form-group">
+				<label>Nazwa</label>
+				<input type="text" class="form-control" id="taskName" name="taskName" value="{{task.taskName}}">
+			</div>
+			<div class="form-group">
+				<label>Opis</label>
+				<input type="text" class="form-control" id="taskDescription" name="taskDescription" value="{{task.taskDescription}}">
+			</div>
+				<div class="form-group"> <!-- Docelowo powinna być opcja dodawania userów -->
+					<label>Osoba</label>
+					<select class="form-control" id="user" name="user">
+						{{#each user}}
+							<option {{author _id task.taskFor}} value="{{_id}}">{{username}}</option>
+						{{/each}}
+					</select>
+				</div>
+			<button type="submit" class="btn btn-primary">Zapisz</button>
+			<h1>{{thisId}}</h1>		
+		</form>		
+	</div>
+</template>

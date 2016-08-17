@@ -1,0 +1,45 @@
+<template name='list'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2>Lista zadań do wykonania dla {{userName}}</h2>		
+				{{#each task}}
+				<div class="row task {{#if isChecked}}checked {{/if}}">
+					<div class="col-xs-10">
+						<h3 class="task-header">{{taskName}} {{#if isChecked}}<span class="label label-default">Zrobione!</span>{{/if}} </h3>
+						{{#if taskDescription}}
+							<p><small>{{taskDescription}}</small></p>
+						{{/if}}
+					</div>
+					<div class="col-xs-2 text-right">
+						<i class="finished-task glyphicon glyphicon-ok"></i>
+						<a href="/task/{{_id}}"><i class="edit-task glyphicon glyphicon-pencil"></i></a>
+						<i class="delete-task glyphicon glyphicon-trash"></i>
+					</div>
+				</div>
+				{{else}}
+						<p>Brak zadań do wykonania</p>
+						<p><a href="/new_task"><i class="glyphicon glyphicon-plus"></i> Dodaj zadanie</a></p>				
+				{{/each}}
+				{{#if finishedTask}}
+					<h2>Zadania ukończone:</h2>
+					{{#each finishedTask}}
+					<div class="row task {{#if isChecked}}checked {{/if}}">
+						<div class="col-xs-10">
+							<h3>{{taskName}} {{#if isChecked}}<span class="label label-default">Zrobione!</span>{{/if}} </h3>
+							<p><small>{{taskDescription}}</small></p>
+						</div>
+						<div class="col-xs-2 text-right">
+							<i class="finished-task glyphicon glyphicon-ok"></i>
+							<a href="/task/{{_id}}"><i class="edit-task glyphicon glyphicon-pencil"></i></a>
+							<i class="delete-task glyphicon glyphicon-trash"></i>
+						</div>
+					</div>		
+					{{else}}
+							<p>Brak ukończonych zadań</p>				
+					{{/each}}
+				{{/if}}
+			</div>
+		</div>		
+	</div>
+</template>

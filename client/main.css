@@ -1,0 +1,35 @@
+body { 
+	padding-top: 70px; 
+}
+.task-header {
+	margin: 5px;
+}
+
+.task {
+	background-color: #8CBED6;
+	font-size: 20px;
+	list-style-type: none;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.task.checked {
+	background-color: #CCC;
+}
+
+.navbar-right {
+	margin-right: 150px;
+	margin-bottom: 0;
+}
+
+.glyphicon-ok {
+	color: #9BD986;
+}
+.glyphicon-ok:hover {
+	color: #CCC;
+	cursor: pointer;
+}
+
+.glyphicon-trash:hover {
+	color: #D99B86;
+	cursor: pointer;
+}

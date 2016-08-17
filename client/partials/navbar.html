@@ -1,0 +1,26 @@
+<template name='navbar'>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Lista zadań</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/list"><i class="glyphicon glyphicon-list-alt"></i> Moja lista</a></li>
+            <li><a href="/new_task"><i class="glyphicon glyphicon-plus"></i> Dodaj zadanie</a></li>
+            <li><a href="/user_list"><i class="glyphicon glyphicon-check"></i> Zarządzaj zadaniami</a></li>
+            <li><a href="/users"><i class="glyphicon glyphicon-user"></i> Lista użytkowników</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+             <li>{{> loginButtons}}</li>         
+          </ul>
+        </div>
+      </div>
+    </nav>
+</template>

@@ -1,0 +1,25 @@
+<template name="user_list">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2>Lista utworzonych przez Ciebie zadań:</h2>
+				{{#each task}}
+				<div class="row task {{#if isChecked}}checked {{/if}}">
+					<div class="col-xs-10">
+						<h3 class="task-header">{{taskName}} {{#if isChecked}}<span class="label label-default">Zrobione!</span>{{/if}} </h3>
+						<p><small>{{taskDescription}}</small></p>
+					</div>
+					<div class="col-xs-2 text-right">
+						<i class="finished-task glyphicon glyphicon-ok"></i>
+						<a href="/task/{{_id}}"><i class="edit-task glyphicon glyphicon-pencil"></i></a>
+						<i class="delete-task glyphicon glyphicon-trash"></i>
+					</div>
+				</div>
+				{{else}}
+						<p>Nie utworzyłeś jeszcze żadnych zadań.</p>
+						<p><a href="/new_task">Dodaj nowe zadanie</a></p>				
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>
