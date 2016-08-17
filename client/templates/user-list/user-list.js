@@ -7,28 +7,16 @@ Template.user_list.helpers({
 });
 
 Template.user_list.events({
-	'click .delete-task': function(event){
-		var taskId = this._id;
+	'click .delete-task': function(){
 
 		if(confirm('Are You Sure?')){
-			Tasks.remove({
-				_id: taskId
-			});
+			Meteor.call('deleteTask', this._id)
 			FlashMessages.sendSuccess('Zadanie zostało usunięte');
 		} else {
 			FlashMessages.sendError('Anulowane przez użytkownika');
 		}		
 	},
-	'click .finished-task': function(event, tmpl){
-		var taskId = this._id;
-		var currentState = this.isChecked;
-
-		Tasks.update({
-			_id: taskId
-		},{
-			$set:{
-				isChecked: !currentState
-			}
-		});
+	'click .finished-task': function(){
+		Meteor.call('finishTask', this._id, this.isChecked) 
 	}	
 });

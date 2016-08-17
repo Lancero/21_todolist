@@ -14,7 +14,7 @@ Template.edit_task.helpers({
 		var id = FlowRouter.getParam('id');
 		return Tasks.findOne({_id: id});
 	},
-	author: function(val1, val2){ // Nie działa :(
+	author: function(val1, val2){
 		if(val1===val2){
 			return 'selected'
 		}
@@ -22,22 +22,13 @@ Template.edit_task.helpers({
 });
 
 Template.edit_task.events({
-	'submit .edit-task-form': function(event, tmpl){
+	'submit .edit-task-form': function(event){
 		var taskName = event.target.taskName.value;
 		var taskDesc = event.target.taskDescription.value;
-		var taskUser = event.target.user.value;
+		var taskUser = event.target.user.value;			
+		var taskId = FlowRouter.getParam('id');
 
-		Tasks.update({
-			_id: tmpl.taskId
-		},{
-			$set:{
-				taskName: taskName,
-				taskDescription: taskDesc,
-				taskFor: taskUser,
-				updatedBy: Meteor.userId(),
-				updatedAt: new Date()
-			}
-		});
+		Meteor.call('editTask', taskName, taskDesc, taskUser, taskId);
 
 		FlashMessages.sendSuccess('Zadanie zostało zaaktualiowane');
 		FlowRouter.go('/list');
