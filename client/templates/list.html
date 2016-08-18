@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				<h2>Lista zadań do wykonania dla {{userName}}</h2>		
+				<h2>Lista zadań do wykonania {{#if currentUser}} dla {{userName}} {{/if}} </h2>	
 				{{#each task}}
 				<div class="row task {{#if isChecked}}checked {{/if}}">
 					<div class="col-xs-10">

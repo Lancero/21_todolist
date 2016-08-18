@@ -27,8 +27,7 @@ Template.list.helpers({
 		return Tasks.find({isChecked: true, taskFor: userId}, {sort:{finishedAt: -1}}); //Finished tasks
 	},
 	userName: function(){
-		var userId = Meteor.userId();
-		return Meteor.users.find(userId);
+		return Meteor.user().username;
 	}
 });
 
