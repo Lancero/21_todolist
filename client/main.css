@@ -1,19 +1,36 @@
 body { 
+	background-image: url('pattern.png'); /* Background pattern from subtlepatterns.com */
 	padding-top: 70px; 
+}
+h2,  label, p {
+	color: #ccc;
+}
+.jumbotron {
+	background-image: url('home3.jpg');
+}
+
+.jumbotron>h1
+ {
+	color: white;
+	text-shadow: 2px 2px black;
+}
+.jumbotron>p {
+	color: #111;
 }
 .task-header {
 	margin: 5px;
 }
 
 .task {
-	background-color: #8CBED6;
+	background-color: #ccc;
+	border-radius: 10px;
 	font-size: 20px;
 	list-style-type: none;
 	padding: 10px;
 	margin-bottom: 10px;
 }
 .task.checked {
-	background-color: #CCC;
+	background-color: #ccc;
 }
 
 .navbar-right {
@@ -25,11 +42,14 @@ body {
 	color: #9BD986;
 }
 .glyphicon-ok:hover {
-	color: #CCC;
+	color: #009900;
 	cursor: pointer;
+}
+.glyphicon-pencil:hover {
+	color: 	#1a8cff;
 }
 
 .glyphicon-trash:hover {
-	color: #D99B86;
+	color: #ff5c33;
 	cursor: pointer;
 }

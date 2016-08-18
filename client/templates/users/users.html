@@ -1,9 +1,11 @@
 <template name="users">
 	<div class="container">
-		<ul class="list-group">
-			{{#each user}}
-				<li class="list-group-item">{{username}}</li>
-			{{/each}}
-		</ul>	
+		<div class="col-md-8 col-md-offset-2">
+			<ul class="list-group">
+				{{#each user}}
+					<li class="list-group-item">{{username}}</li>
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 </template>
