@@ -1,3 +1,5 @@
+Meteor.subscribe('users');
+
 Template.registerHelper( 'user', () => {
   return Meteor.users.find({}, {sort:{username: 1}});
 });
@@ -16,6 +18,8 @@ Template.new_task.events({
 		return false;
 	}
 });
+Meteor.subscribe('myCurrentTasks');
+Meteor.subscribe('myFinishedTasks');
 
 Template.list.helpers({
 	task: function(){

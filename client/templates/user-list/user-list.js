@@ -1,3 +1,7 @@
+Meteor.subscribe('currentTasks');
+Meteor.subscribe('finishedTasks');
+
+
 Template.user_list.helpers({
 	task: function(){
 		var userId = Meteor.userId();
