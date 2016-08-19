@@ -21,6 +21,13 @@ Template.user_list.events({
 		}		
 	},
 	'click .finished-task': function(){
-		Meteor.call('finishTask', this._id, this.isChecked) 
+		Meteor.call('finishTask', this._id, this.isChecked, function(err, res){
+			if(!err){
+				FlashMessages.sendSuccess('Zadanie zostało oznaczone jako ukończone');
+			} else {
+				FlashMessages.sendError('Podczas pretważania wystąpił błąd');
+				console.log(err);
+			}
+		}) 
 	}	
 });
