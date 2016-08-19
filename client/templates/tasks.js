@@ -18,6 +18,10 @@ Template.new_task.events({
 		return false;
 	}
 });
+Template.list.onCreated({
+	//Branch Issue #1 test
+});
+
 Meteor.subscribe('myCurrentTasks');
 Meteor.subscribe('myFinishedTasks');
 
