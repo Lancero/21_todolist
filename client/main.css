@@ -5,6 +5,9 @@ body {
 h2,  label, p {
 	color: #ccc;
 }
+small {
+	color: #000;
+}
 .jumbotron {
 	background-image: url('home3.jpg');
 }
@@ -30,7 +33,7 @@ h2,  label, p {
 	margin-bottom: 10px;
 }
 .task.checked {
-	background-color: #ccc;
+	background-color: #888;
 }
 
 .navbar-right {
