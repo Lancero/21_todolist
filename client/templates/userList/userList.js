@@ -2,7 +2,7 @@ Meteor.subscribe('currentTasks');
 Meteor.subscribe('finishedTasks');
 
 
-Template.user_list.helpers({
+Template.userList.helpers({
 	task: function(){
 		var userId = Meteor.userId();
 
@@ -10,7 +10,7 @@ Template.user_list.helpers({
 	}
 });
 
-Template.user_list.events({
+Template.userList.events({
 	'click .delete-task': function(){
 
 		if(confirm('Are You Sure?')){

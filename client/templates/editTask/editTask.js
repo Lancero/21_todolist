@@ -1,4 +1,4 @@
-Template.edit_task.onCreated(function(){
+Template.editTask.onCreated(function(){
 	this.taskId = FlowRouter.getParam('id');
 		
 	var self = this;
@@ -9,7 +9,7 @@ Template.edit_task.onCreated(function(){
 	});
 });
 
-Template.edit_task.helpers({
+Template.editTask.helpers({
 	task: ()=> {
 		var id = FlowRouter.getParam('id');
 		return Tasks.findOne({_id: id});
@@ -21,7 +21,7 @@ Template.edit_task.helpers({
 	}
 });
 
-Template.edit_task.events({
+Template.editTask.events({
 	'submit .edit-task-form': function(event){
 		var taskName = event.target.taskName.value;
 		var taskDesc = event.target.taskDescription.value;
