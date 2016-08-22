@@ -28,11 +28,15 @@ Template.edit_task.events({
 		var taskUser = event.target.user.value;			
 		var taskId = FlowRouter.getParam('id');
 
-		Meteor.call('editTask', taskName, taskDesc, taskUser, taskId);
-
-		FlashMessages.sendSuccess('Zadanie zostało zaaktualiowane');
-		FlowRouter.go('/list');
-
+		Meteor.call('editTask', taskName, taskDesc, taskUser, taskId, function(err, res){
+			if(!err){
+				FlashMessages.sendSuccess('Zadanie zostało zaaktualiowane');
+				FlowRouter.go('/list');
+			} else {
+				FlashMessages.sendError('Podczas operacji wystąpił błąd');
+				console.log(err);
+			}
+		});
 		return false;
 	}
 });

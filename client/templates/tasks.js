@@ -10,11 +10,15 @@ Template.new_task.events({
 		var taskDesc = event.target.taskDescription.value;
 		var taskUser = event.target.user.value;
 		
-		Meteor.call('addNewTask', taskName, taskDesc, taskUser);
-
-		FlashMessages.sendSuccess('Zadanie dodano pomyślnie do listy');
-		FlowRouter.go('/list');
-
+		Meteor.call('addNewTask', taskName, taskDesc, taskUser, function(err, res){
+			if(!err){
+				FlashMessages.sendSuccess('Zadanie dodano pomyślnie do listy');
+				FlowRouter.go('/list');	
+			} else {
+				FlashMessages.sendError('Podczas operacji wystąpił błąd');
+				console.log(err);
+			}
+		});
 		return false;
 	}
 });
@@ -38,13 +42,22 @@ Template.list.helpers({
 Template.list.events({
 	'click .delete-task': function(){
 		if(confirm('Are You Sure?')){
-			Meteor.call('deleteTask', this._id);
-			FlashMessages.sendSuccess('Zadanie zostało usunięte');
-		} else {
-			FlashMessages.sendError('Anulowane przez użytkownika');
-		}		
+			Meteor.call('deleteTask', this._id, function(err, res){
+				if(!err){
+					FlashMessages.sendSuccess('Zadanie zostało usunięte');					
+				} else {
+					FlashMessages.sendError('Podczas operacji wystąpił błąd');
+					console.log(err);
+				}
+			});
+		}
 	},
 	'click .finished-task': function(){
-		Meteor.call('finishTask', this._id, this.isChecked);
+		Meteor.call('finishTask', this._id, this.isChecked, function(err, res){
+			if(err){
+				FlashMessages.sendError('Podczas operacji wystąpił błąd');
+				console.log(err);
+			}
+		});
 	}
 });

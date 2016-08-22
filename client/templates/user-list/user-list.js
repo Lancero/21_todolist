@@ -12,22 +12,23 @@ Template.user_list.helpers({
 
 Template.user_list.events({
 	'click .delete-task': function(){
-
 		if(confirm('Are You Sure?')){
-			Meteor.call('deleteTask', this._id)
-			FlashMessages.sendSuccess('Zadanie zostało usunięte');
-		} else {
-			FlashMessages.sendError('Anulowane przez użytkownika');
-		}		
+			Meteor.call('deleteTask', this._id, function(err, res){
+				if(!err){
+					FlashMessages.sendSuccess('Zadanie zostało usunięte');
+				} else {
+					FlashMessages.sendError('Podczas przetważania wystąpił błąd');
+					console.log(err);
+				}
+			});
+		}
 	},
 	'click .finished-task': function(){
 		Meteor.call('finishTask', this._id, this.isChecked, function(err, res){
-			if(!err){
-				FlashMessages.sendSuccess('Zadanie zostało oznaczone jako ukończone');
-			} else {
-				FlashMessages.sendError('Podczas pretważania wystąpił błąd');
+			if(err){
+				FlashMessages.sendError('Podczas przetważania wystąpił błąd');
 				console.log(err);
 			}
-		}) 
-	}	
+		});
+	}
 });
