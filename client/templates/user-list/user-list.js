@@ -1,11 +1,11 @@
-Meteor.subscribe('currentTasks');
-Meteor.subscribe('finishedTasks');
-
+Template.user_list.onCreated(function()	{
+		this.subscribe('currentTasks');
+		this.subscribe('finishedTasks');
+	});
 
 Template.user_list.helpers({
 	task: function(){
 		var userId = Meteor.userId();
-
 		return Tasks.find({createdBy: userId}, {sort:{createdAt: -1}});
 	}
 });

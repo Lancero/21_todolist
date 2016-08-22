@@ -14,6 +14,10 @@ Meteor.publish('finishedTasks', function(){
 	return Tasks.find({isChecked: true, createdBy: this.userId}, {sort:{finishedAt: -1}}); 	//Finished tasks created by user
 });
 
+Meteor.publish('singleTask', function(id){
+	return Tasks.find({_id: id});
+});
+
 Meteor.publish('users', function(){
 	return Meteor.users.find({}, {sort:{username: 1}});
 });

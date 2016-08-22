@@ -18,13 +18,11 @@ Template.new_task.events({
 		return false;
 	}
 });
-Template.list.onCreated({
-	//Branch Issue #1 test
+
+Template.list.onCreated(function(){
+	this.subscribe('myCurrentTasks');
+	this.subscribe('finishedTasks');
 });
-
-Meteor.subscribe('myCurrentTasks');
-Meteor.subscribe('myFinishedTasks');
-
 Template.list.helpers({
 	task: function(){
 		var userId = Meteor.userId();
