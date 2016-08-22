@@ -1,7 +1,11 @@
-Meteor.subscribe('users');
+//Meteor.subscribe('users'); //Temp off
 
 Template.registerHelper( 'user', () => {
   return Meteor.users.find({}, {sort:{username: 1}});
+});
+
+Template.new_task.onCreated(function(){
+	this.subscribe('users');
 });
 
 Template.new_task.events({
