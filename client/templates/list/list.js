@@ -1,4 +1,4 @@
-Meteor.subscribe('users');
+//Meteor.subscribe('users'); //Temp off
 
 Template.registerHelper( 'user', () => {
   return Meteor.users.find({}, {sort:{username: 1}});
