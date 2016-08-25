@@ -1,7 +1,11 @@
-Meteor.subscribe('users');
+//Meteor.subscribe('users'); //Temp off
 
 Template.registerHelper( 'user', () => {
   return Meteor.users.find({}, {sort:{username: 1}});
+});
+
+Template.new_task.onCreated(function(){
+	this.subscribe('users');
 });
 
 Template.new_task.events({
@@ -18,9 +22,11 @@ Template.new_task.events({
 		return false;
 	}
 });
-Meteor.subscribe('myCurrentTasks');
-Meteor.subscribe('myFinishedTasks');
 
+Template.list.onCreated(function(){
+	this.subscribe('myCurrentTasks');
+	this.subscribe('finishedTasks');
+});
 Template.list.helpers({
 	task: function(){
 		var userId = Meteor.userId();

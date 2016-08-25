@@ -1,11 +1,12 @@
 Template.edit_task.onCreated(function(){
+	this.subscribe('users');
+
 	this.taskId = FlowRouter.getParam('id');
-		
+	
 	var self = this;
 	self.autorun(function(){
 		var id = FlowRouter.getParam('id');
-
-		//self.subscribe('singleRecipe', id);
+		self.subscribe('singleTask', id);
 	});
 });
 
