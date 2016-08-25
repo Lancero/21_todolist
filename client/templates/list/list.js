@@ -1,31 +1,3 @@
-//Meteor.subscribe('users'); //Temp off
-
-Template.registerHelper( 'user', () => {
-  return Meteor.users.find({}, {sort:{username: 1}});
-});
-
-Template.newTask.onCreated(function(){
-    this.subscribe('users');
-});
-
-Template.newTask.events({
-	'submit .new-task-form': function(){
-		var taskName = event.target.taskName.value;
-		var taskDesc = event.target.taskDescription.value;
-		var taskUser = event.target.user.value;
-
-        Meteor.call('addNewTask', taskName, taskDesc, taskUser, function(err, res){
-            if(!err){
-                FlashMessages.sendSuccess('Zadanie dodano pomyślnie do listy');
-                FlowRouter.go('/list');
-            } else {
-                FlashMessages.sendError('Podczas operacji wystąpił błąd');
-                console.log(err);
-            }
-        });
-        return false;
-	}
-});
 Template.list.onCreated(function(){
     this.subscribe('myCurrentTasks');
     this.subscribe('finishedTasks');
