@@ -4,11 +4,11 @@ Template.registerHelper( 'user', () => {
   return Meteor.users.find({}, {sort:{username: 1}});
 });
 
-Template.new_task.onCreated(function(){
+Template.newTask.onCreated(function(){
     this.subscribe('users');
 });
 
-Template.new_task.events({
+Template.newTask.events({
 	'submit .new-task-form': function(){
 		var taskName = event.target.taskName.value;
 		var taskDesc = event.target.taskDescription.value;

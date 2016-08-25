@@ -1,4 +1,4 @@
-Template.user_list.onCreated(function()	{
+Template.userList.onCreated(function()	{
 		this.subscribe('currentTasks');
 		this.subscribe('finishedTasks');
 	});
