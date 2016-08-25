@@ -3,14 +3,14 @@ Template.user_list.onCreated(function()	{
 		this.subscribe('finishedTasks');
 	});
 
-Template.user_list.helpers({
+Template.userList.helpers({
 	task: function(){
 		var userId = Meteor.userId();
 		return Tasks.find({createdBy: userId}, {sort:{createdAt: -1}});
 	}
 });
 
-Template.user_list.events({
+Template.userList.events({
 	'click .delete-task': function(){
 		if(confirm('Are You Sure?')){
 			Meteor.call('deleteTask', this._id, function(err, res){
